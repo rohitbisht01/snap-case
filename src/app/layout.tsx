@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Recursive } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const recursive = Recursive({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "SnapCase",
@@ -16,7 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={recursive.className}>
+        <main className="flex grainy-light flex-col min-h-[calc(100vh-3.5rem-1px)]">
+          <Navbar />
+          <div className="flex flex-1 flex-col h-full">{children}</div>
+          <Footer />
+        </main>
+      </body>
     </html>
   );
 }
